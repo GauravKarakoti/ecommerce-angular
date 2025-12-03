@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://api.yourdomain.com/'
+  apiUrl: 'https://ecommerce-angular-5it4.onrender.com'
 };
