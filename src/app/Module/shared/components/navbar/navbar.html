@@ -1,0 +1,44 @@
+<div class="relative fixed top-0 x-50 right-0 left-0 bg-[#69f0ae] text-gray-800 z-50">
+    <div class="px-5 lg:px-20 flex h-16 items-center justify-between">
+        <div class="flex  items-center">
+            <div class="mr-5">
+                <img src="https://imgs.search.brave.com/ajt3-7FtCcttxf_ZrFvKQjM11ob1Yl1TYrqtFccm6WQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS12ZWN0/b3IvZWNvbW1lcmNl/LWxvZ28tdGVtcGxh/dGUtZGVzaWduLW9u/bGluZS1zaG9wcGlu/Zy1sb2dvXzYyMjg3/NC01LmpwZz9zZW10/PWFpc19oeWJyaWQm/dz03NDAmcT04MA" class="w-8" alt="Logo">
+            </div>
+            <div class="">
+                <div class="flex items-center space-x-4">
+                    <a routerLink="/" class="text-gray-800 font-semibold text-lg">
+                        Shop
+                    </a>
+                    <div>
+                        <button class="open-button" (click)="openNavbarContent('men')" mat-button>Men</button>
+                    </div>
+                    <div>
+                        <button class="open-button" (click)="openNavbarContent('women')" mat-button>Women</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex items-center">
+            <button mat-icon-button (click)="navigateTo('cart')">
+                <mat-icon>shopping_cart</mat-icon>
+            </button>
+            <button (click)="handleOpenLoginModel()" *ngIf="!userProfile" mat-raised-button type="" color="accent">LOGIN</button>
+            <div *ngIf="userProfile" class="relative ml-3 flex items-center">
+                <div class="flex items-center space-x-5">
+                    <span class="font-bold text-lg">{{userProfile.firstName}}</span>
+                    <button mat-button [matMenuTriggerFor]="profileMenu">
+                        <img class="h-7 w-7" src="https://cdn.pixabay.com/photo/2013/07/12/19/14/angry-154378_1280.png" alt="">
+                    </button>
+                    <mat-menu #profileMenu="matMenu">
+                        <button (click)="navigateTo('account/orders')" mat-menu-item>Orders</button>
+                        <button mat-menu-item>Profile</button>
+                        <button mat-menu-item (click)="handleLogout()">Logout</button>
+                    </mat-menu>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="isNavbarContentOpen" class="absolute right-0 left-0 modal-container">
+        <app-nav-content [selectedSection]="currentSection" />
+    </div>
+</div>
